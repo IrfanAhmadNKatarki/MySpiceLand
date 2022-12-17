@@ -10,18 +10,6 @@
    
 </head>
   
-  <style>
-   body{
-        background-image: url('https://i.pinimg.com/originals/74/85/02/7485027689f1947658f7a0b252f1c56b.gif') ;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-           background-position: center center; 
-           background-size: cover;
-      height: 100%;
-    padding: 5px;
-    width: 100%;
-      } 
-  </style>
   <!-- <body background="https://png.pngtree.com/background/20220714/original/pngtree-big-isolated-motorcycle-vector-colorful-icons-flat-illustrations-of-delivery-by-picture-image_1607593.jpg"> -->
     <body>
     <!-- Preloader -->
@@ -38,7 +26,7 @@
         <a href="#services">Services</a>
         <a href="#aboutss">About Us</a>
         <a href="#contact">Contact Us</a>
-          <a href="/login">Sign-In</a>
+          
         <a href="" class="btn">Make an Order</a>
       </nav>
 

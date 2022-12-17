@@ -16,154 +16,7 @@
 	crossorigin="anonymous">
 <title>Add Products</title>
 
-<style>
-* {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-	font-family: sans-serif;
-}
 
-body{
-         background-image: url('https://static.vecteezy.com/system/resources/previews/000/425/737/original/delivery-man-with-box-postman-design-isolated-on-white-background-courier-in-hat-and-uniform-with-package-vector.jpg');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center;
-          background-size: cover;
-      }
-
-.container {
-
-	width: 100%;
-	max-width: 650px;
-	background: rgba(0, 0, 0, 0.5);
-	padding: 28px;
-	background-color: white;
-	margin:  100px auto;
-	border-radius: 10px;
-	
-}
-
-.form-title {
-	font-size: 26px;
-	font-weight: 600;
-	text-align: center;
-	padding-bottom: 6px;
-	color: black;
-	text-shadow: 2px 2px 2px black;
-	border-bottom: solid 1px white;
-}
-
-.main-user-info {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	padding: 20px 0;
-}
-
-.user-input-box:nth-child(2n) {
-	justify-content: end;
-}
-
-.user-input-box {
-	display: flex;
-	flex-wrap: wrap;
-	width: 50%;
-	padding-bottom: 15px;
-}
-
-.user-input-box label {
-	width: 95%;
-	color: Black;
-	font-size: 20px;
-	font-weight: 400;
-	margin: 5px 0;
-}
-
-.user-input-box input {
-	height: 40px;
-	width: 95%;
-	border-radius: 7px;
-	outline: none;
-	border: 1px solid grey;
-	padding: 0 10px;
-}
-
-
-.form-submit-btn input {
-	cursor: pointer;
-}
-
-.form-submit-btn {
-	margin-top: 40px;
-}
-
-.form-submit-btn input {
-	display: block;
-	width: 100%;
-	margin-top: 10px;
-	font-size: 20px;
-	padding: 10px;
-	border: none;
-	border-radius: 3px;
-	color: rgb(209, 209, 209);
-	background: rgba(63, 114, 76, 0.7);
-}
-
-.form-submit-btn input:hover {
-	background: rgba(56, 204, 93, 0.7);
-	color: rgb(255, 255, 255);
-}
-
-@media ( max-width : 600px) {
-	.container {
-		min-width: 280px;
-	}
-	.user-input-box {
-		margin-bottom: 12px;
-		width: 100%;
-	}
-	.user-input-box:nth-child(2n) {
-		justify-content: space-between;
-	}
-	.main-user-info {
-		max-height: 380px;
-		overflow: auto;
-	}
-	.main-user-info::-webkit-scrollbar {
-		width: 0;
-	}
-}
-nav{
-  background: #E9DEDE;
-  height: 80px;	Q
-  width: 100%;
-}
-nav ul{
-  float: right;
-  margin-right: 20px;
-}
-nav ul li{
-  
-  line-height: 40px;
-  margin: 0 5px;
-}
-nav ul li a{
-  color: #fff;
-  font-size: 17px;
-  padding: 7px 13px;
-  border-radius: 3px;
-  text-transform: uppercase;
-}
-nav ul li{
-    display: block;
-    margin: 50px 0;
-    line-height: 10px;
-  }
-  nav ul li a{
-    font-size: 20px;
-  }
-</style>
 
 </head>
 <body>
@@ -197,7 +50,7 @@ nav ul li{
 <center>
 	<div class="container">
 		<h1 class="form-title" id="update">Update Profile</h1>
-		<form action="/delivery/updateProfile/${user.id}" method="post">
+		<form action="/admin/updateProfile/${user.id}" method="post">
 		
 			<div class="main-user-info">
 			
@@ -216,12 +69,26 @@ nav ul li{
 						  value="${user.contact}" />
 				</div>
 				
-				<div class="user-input-box">
-					<label for="confirmPassword">Address</label> <input
-						type="text" id="address" name="address" value="${user.address}"
-						 />
-				</div>
-			</div>
+				<br>
+					<div class="user-input-box">
+						<label for="confirmPassword">Street</label> <input type="text"
+							id="address" name="street" required placeholder="Street" value="${user.street}" />
+					</div>
+					<div class="user-input-box">
+						<label for="confirmPassword">Area</label> <input type="text"
+							id="address" name="area" required placeholder="Area" value="${user.area}" />
+					</div>
+					<div class="user-input-box">
+						<label for="confirmPassword">City</label> <input type="text"
+							id="address" name="city" required placeholder="City" value="${user.city}"  />
+					</div>
+					<div class="user-input-box">
+						<label for="confirmPassword">Pincode</label> <input type="text"
+							id="address" name="pincode"  pattern="^\d{6}$"  title="Invalid pincode enter 6 digit pincode!!" required placeholder="Pincode" value="${user.pincode}" />
+					</div>
+					</div>
+					
+			
 			<input type="hidden" name="id" value="${user.id}" />
     <input type="hidden" name="pass" value="${user.pass}" />
         <input type="hidden" name="role" value="${user.role}" />
@@ -230,14 +97,16 @@ nav ul li{
    
         
 			<div class="form-submit-btn">
-				<input type="submit" value="submit">
+				<input type="submit" value="Submit">
 			</div>
 		</form>
+		<br>
 
-		<div class="form-submit-btn">
-			<form action="/delivery/deliverhome/${user.id}" method="get">
+		<%-- <div class="form-submit-btn">
+			<form action="/admin/adminhome/${user.id}" method="get">
 				<input type="submit" value="Cancel">
 			</form>
+		</div> --%>
 		</div>
 
 		</form>
@@ -262,7 +131,7 @@ nav ul li{
 			image.src = URL.createObjectURL(event.target.files[0]);
 		};
 	</script>
-
+<br><br><br><br><br><br><br>
 	</div>
 </body>
 </html>

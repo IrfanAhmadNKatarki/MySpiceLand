@@ -42,6 +42,7 @@ public class AdminController {
 	private ProductServiceImpl productservice;
 
 	int uid;
+	int flag = 0;
 
 	/*
 	 * Once the seller/admin login, It will navigate to the adminhome.
@@ -81,7 +82,13 @@ public class AdminController {
 	@GetMapping("/admin/products/{id}")
 	public String adminproducts(@PathVariable("id") int user_id, Model model) {
 		model.addAttribute("user", service.getuser(user_id));
+		System.out.println("get product");
 		
+		if (flag == 1) {
+		model.addAttribute("perror", "Product is already added");
+		flag=0;
+		System.out.println("error>>>>>>>>>>");
+		}
 		return "admin/addproducts";
 	}
 
@@ -109,7 +116,7 @@ public class AdminController {
 			List<Products> pro = productservice.getProductsbyproductname(productName);
 
 			User u1 = service.getuser(user_id);
-			int flag = 0;
+			
 			if (pro != null) {
 
 				for (Products produ : pro) {
@@ -122,7 +129,8 @@ public class AdminController {
 				}
 			}
 			if (flag == 1) {
-				model.addAttribute("me", "Product is already added");
+				System.out.println("post error>>>>>>>>>");
+				model.addAttribute("perror", "Product is already added");
 				return "redirect:/admin/products/"+user_id;
 			}
 			Products p = new Products(productName, price, weight, productDescription, quantity, base64Encoded, byteArr);

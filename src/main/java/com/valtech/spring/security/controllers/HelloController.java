@@ -99,6 +99,7 @@ public class HelloController {
 			}
 
 		}
+		model.addAttribute("userna", "Username Already Exists");
 		return "register";
 	}
 
@@ -132,7 +133,7 @@ public class HelloController {
 		try {
 			
 			String role = service.getrole(registerUserModel.getUsername());
-			  if (loginError) {
+			 
 			if (role.equals(s1)) {
 				if (passwordEncoder().matches((registerUserModel.getPass()),service.findUserPass(registerUserModel.getUsername()))
 						&& registerUserModel.getUsername().equals(service.findUser(registerUserModel.getUsername()))){
@@ -211,7 +212,7 @@ public class HelloController {
 
 			}
 
-		}
+		
 		}
 		catch (Exception n) {
 			String message = "Invalid Username and Password";
@@ -282,7 +283,7 @@ public class HelloController {
 			u.setCnfmpass(passwordEncoder().encode(confirmPassword));
 			service.updateUser(u);
 			System.out.println(u.getPass());
-			return "/login";
+			return "redirect:/login";
 
 		} else {
 			model.addAttribute("me", "Password And ConfirmPassword Does Not match");

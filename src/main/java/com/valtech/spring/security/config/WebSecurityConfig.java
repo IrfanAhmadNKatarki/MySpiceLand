@@ -30,12 +30,12 @@ public class WebSecurityConfig {
 			.antMatchers("/register", "/login", "/logout").permitAll()
 			.and()
 			
-		      .formLogin()
-		      /*.loginPage("/login")// (5)
-*/		        .defaultSuccessUrl("/index") // (5)
+		      /*.formLogin()
+		      .loginPage("/login")// (5)
+		        .defaultSuccessUrl("/index") // (5)
 		        .failureUrl("/login")
 		        .permitAll()
-		        .and()
+		        .and()*/
 		        
 		        .httpBasic();
 		     http.logout() // (6)

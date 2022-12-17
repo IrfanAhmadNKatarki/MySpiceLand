@@ -1,6 +1,8 @@
 package com.valtech.spring.security.controllers;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -127,8 +129,20 @@ public class UserController {
 
 				CartLine c = new CartLine(prod_id, p.getProductName(), p.getPrice(), p.getUserid(), id);
 
+				
+				
+			
+				
+				
+			if(p.getQuantity()!=0){
 				check.setQuantity(check.getQuantity() + 1);
-
+				p.setQuantity(p.getQuantity()-1);
+			}
+			else{
+				System.out.println(p.getProductName());
+			}
+				int a= p.getQuantity()-1;
+				System.out.println(a);
 				cartLineService.createCartLine(check);
 
 			}
@@ -145,7 +159,7 @@ public class UserController {
 			cartLine.setProdid(prod_id);
 			cartLine.setProductName(p.getProductName());
 			cartLine.setPrice(p.getPrice());
-			cartLine.setQuantity(cart.getQuantity() + 1);
+			cartLine.setQuantity(cart.getQuantity());
 			System.out.println(cartLine.getQuantity());
 
 			cartLineService.createCartLine(cartLine);
@@ -190,8 +204,19 @@ public class UserController {
 	public String DeleteCartLine(Model model, @PathVariable("id") int id, @PathVariable("userid") int user_id) {
 
 		System.out.println("DELETING");
-
+		
+	CartLine c= cartLineService.findById(id);
+		
+	Products p=productservice.getProduct(c.getProdid());
+	
+	p.setQuantity(p.getQuantity()+c.getQuantity()-1);
+	
+	
+	System.out.println();
 		cartLineService.deleteCartLine(id);
+		
+		
+		
 
 		return "redirect:/user/cart/" + user_id;
 
@@ -202,7 +227,7 @@ public class UserController {
 
 	@GetMapping("/user/payment/{id}")
 	public String payment(ModelMap model, @PathVariable("id") int id) {
-
+		System.out.println("TIME>>>>>>>>>>>"+LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MMMM-yyyy / hh:mm")));
 		if (cartLineService.getAllordersByuserid(id).size() == 0) {
 			model.addAttribute("error", "Please add Items to cart");
 			return "redirect:/user/cart/" + id;
@@ -226,7 +251,8 @@ public class UserController {
 		Orders o = new Orders();
 		o.setUser_id(id);
 		o.setCartIds(cart_ids);
-		o.setDate(LocalDate.now());
+		o.setDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MMMM-yyyy / hh:mm")));
+		
 		o.setArea(user.getArea());
 		
 		o.setAdminIds(admin_ids);

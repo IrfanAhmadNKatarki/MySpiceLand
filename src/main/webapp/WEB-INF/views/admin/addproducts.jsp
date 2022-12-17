@@ -15,78 +15,13 @@
 	href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
 	crossorigin="anonymous">
+	 <link rel="stylesheet" href="/css/addProducts.css" />
 	
 <title>Add Products</title>
 
-<style>
-body {
-	    background-image: url('https://cdn.wallpapersafari.com/14/13/SmgTFb.jpg'); 
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-position: center;
-	background-size: cover;
-}
-
-.container {
-	background-image:
-		url('https://cropper.watch.aetnd.com/cdn.watch.aetnd.com/sites/3/2018/01/watch-desktop-hero-man-vs-master-chef-battle.jpg?w=1440');
-	
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: fixed;
-}
-
-.button-55 {
-	background-color: #0078d0;
-	border: 0;
-	border-radius: 56px;
-	color: #fff;
-	cursor: pointer;
-	display: inline-block;
-	font-family: system-ui, -apple-system, system-ui, "Segoe UI", Roboto,
-		Ubuntu, "Helvetica Neue", sans-serif;
-	font-size: 18px;
-	font-weight: 600;
-	outline: 0;
-	padding: 16px 21px;
-	position: relative;
-	text-align: center;
-	text-decoration: none;
-	transition: all .3s;
-	user-select: none;
-	-webkit-user-select: none;
-	touch-action: manipulation;
-}
-
-.button-55:before {
-	background-color: initial;
-	background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
-	border-radius: 125px;
-	content: "";
-	height: 50%;
-	left: 4%;
-	opacity: .5;
-	position: absolute;
-	top: 0;
-	transition: all .3s;
-	width: 92%;
-}
-
-.button-55:hover {
-	box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1)
-		0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
-	transform: scale(1.05);
-}
-
-@media ( min-width : 768px) {
-	.button-55 {
-		padding: 16px 48px;
-	}
-}
-</style>
 <script src="/js/main.js"></script>
 </head>
-<body>
+<body class="body">
 
 	<div class="c1">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -125,8 +60,9 @@ body {
 						id="user_id" name="user_id" value="${user.id}" type="hidden" />
 						</div>
 					</div>
-					<h3 style="color: white;">Add a new Product</h3>
-					
+					<center><h3 style="color: white;">Add a new Product</h3></center>
+				<div style="color:red;">
+							<h3>${perror}</h3>
 					<div class="col-sm-3">
 						<div class="form-group">
 							<label for="productName" style="color: white;">ProductName</label>
@@ -174,10 +110,12 @@ body {
 						
 						 <p style="color: white;">Product Image</p>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" name="eimage" required accept="image/jpeg, image/png" id="productImage" data-max-size="2048" onchange="loadfile(event)"   /> 
-                    <label class="custom-file-label border border-warning" for="productImage">Choose file</label>
+                     <!-- <input type="file" class="custom-file-input" name="eimage" required accept="image/jpeg, image/png" id="productImage" data-max-size="2048" onchange="loadfile(event)"  /> 
+                    <label class="custom-file-label border border-warning" for="productImage">Choose file</label>  -->
+                     <input type="file" id="productImage"  name="eimage" required accept="image/jpeg, image/png" id="productImage" data-max-size="2048" onchange="loadfile(event)">
                     
                  </div>
+                 <h4></h4>
                   <center style="color: white;"> ${me}</center>
 						<br><br>
 						 <input type="submit" class="button-55" name="submit"> <br>
@@ -210,6 +148,7 @@ body {
 
    var Upload = function() {
         var fileUpload = document.getElementById("productImage");
+       
         var maxSize = fileUpload.getAttribute('data-max-size');
         
         var maxSize1 = parseFloat(maxSize);
@@ -232,15 +171,19 @@ body {
                 return false;
             }
             
-            alert("Product is added");
+            
         } else {
             alert("This browser does not support HTML5.");
         }
     }
-    
+   $(document).ready(function() {
+		$('input[type="file"]').change(function(e) {
+			var geekss = e.target.files[0].name;
+			 $("h4").text(geekss + ' is the selected file.'); 
 
-
-
+		});
+	});
+   
 
 </script>
 

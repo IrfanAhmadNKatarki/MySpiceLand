@@ -1,6 +1,7 @@
 package com.valtech.spring.security.entity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class Orders {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;//unique constraint of the Order .
 	private ArrayList<Integer> cartIds;//List of the id's of cartitems.
-	private LocalDate date;//Date on which order is placed.
+	private String date;//Date on which order is placed.
 	private int user_id;// user id ,who placed the order.
 	private String area;
 	private ArrayList<Integer> adminIds;
@@ -26,7 +27,7 @@ public class Orders {
 		super();
 	}
 
-	public Orders(int id, ArrayList<Integer> cartIds, LocalDate date, int user_id, ArrayList<Integer> adminIds,String area) {
+	public Orders(int id, ArrayList<Integer> cartIds, String date, int user_id, ArrayList<Integer> adminIds,String area) {
 		super();
 		this.id = id;
 		this.cartIds = cartIds;
@@ -36,7 +37,7 @@ public class Orders {
 		this.area=area;
 	}
 
-	public Orders(ArrayList<Integer> cartIds, LocalDate date, int user_id, ArrayList<Integer> adminIds,String area) {
+	public Orders(ArrayList<Integer> cartIds, String date, int user_id, ArrayList<Integer> adminIds,String area) {
 		super();
 		this.cartIds = cartIds;
 		this.date = date;
@@ -61,11 +62,11 @@ public class Orders {
 		this.cartIds = cartIds;
 	}
 
-	public LocalDate getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDate date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

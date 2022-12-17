@@ -13,81 +13,13 @@
 	href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
 	crossorigin="anonymous">
+	
+	    <link rel="stylesheet" href="/css/adminHome.css" />
 <title>Admin Dashboard</title>
-<style >
- body{
-        background-image: url('https://cdn.wallpapersafari.com/14/13/SmgTFb.jpg'); 
-        background-color: #F5CBCB;
-        
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center;
-          background-size: cover;
-      }
-      
-      .product{
-        background-image: url('https://cdn1.iconfinder.com/data/icons/business-related/64/19-512.png');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center;
-          background-size: cover;
-      }
-      
-     .button-33 {
-  appearance: none;
-  background-color: #FFFFFF;
-  border-radius: 40em;
-  border-style: none;
-  box-shadow: #ADCFFF 0 -12px 6px inset;
-  box-sizing: border-box;
-  color: #000000;
-  cursor: pointer;
-  display: inline-block;
-  font-family: -apple-system,sans-serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: -.24px;
-  margin: 0;
-  outline: none;
-  padding: 1rem 1.3rem;
-  quotes: auto;
-  text-align: center;
-  text-decoration: none;
-  transition: all .15s;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.button-33:hover {
-  background-color: #FFC229;
-  box-shadow: #FF6314 0 -6px 8px inset;
-  transform: scale(1.125);
-}
-
-.button-33:active {
-  transform: scale(1.025);
-}
-
-@media (min-width: 768px) {
-  .button-33 {
-    font-size: 1.5rem;
-    padding: .75rem 2rem;
-  }
-}
-      .clipkart{
-        background-image: url('https://thumbs.dreamstime.com/b/street-vendor-sels-indian-colored-spices-cartoon-caricature-street-vendor-sels-indian-colored-spices-155544506.jpg');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center;
-          background-size: cover;
-      } 
-       
-</style>
 
 </head>
 
-<body class="bg-dark">
+<body class="body">
 <form action="/admin/adminhome/" method="get"> 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
@@ -107,7 +39,7 @@
 				<ul class="navbar-nav">
 					<!--  <li class="nav-item active"><a class="nav-link" href="/adminhome">Home
 							Page</a></li>-->
-					<li class="nav-item active"><a class="nav-link" href="/logout">Logout</a></li>
+					<li class="nav-item active"><a class="nav-link" href="/login">Logout</a></li>
 
 				</ul>
 
