@@ -125,7 +125,7 @@
 					<script>
 					
 					
-					 tot+=${cart.quantity} * ${cart.price};
+					 tot+=${cart.quantity}*${cart.price};
 					var concatElement = document.getElementById("total");
 					
 				
@@ -168,6 +168,10 @@
 	</div>
 <br><br>
 <button id="download-button"  class="button-17">Download Bill</button>
+</div>
+
+
+<br><br>
 </div>
 <!-- To convert the bill of the order in csv from  -->
 <script type="text/javascript">
@@ -217,6 +221,13 @@
 		}
 
 	</script>
+
+
+<form action="/user/pdfreport/" method="GET">
+
+	<button id="download-button2"  class="button-17">Download Bill2</button>
+
+</form>
 
 <form action="/user/orderTracking/${user.id}" method="POST">
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

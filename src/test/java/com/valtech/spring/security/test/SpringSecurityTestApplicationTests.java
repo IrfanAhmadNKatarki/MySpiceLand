@@ -57,33 +57,33 @@ class SpringSecurityTestApplicationTests {
 	        mvc.perform(get("/register")).andExpect(status().isOk());
 	    }
 	    
-	     @Test
-	     void testAdminHome() throws Exception {
-	       //  int id = 1;
-	         List<User> users= service.findAll();
-	         ArrayList<Integer> userIds = new ArrayList<>();
+	    //  @Test
+	    //  void testAdminHome() throws Exception {
+	    //    //  int id = 1;
+	    //      List<User> users= service.findAll();
+	    //      ArrayList<Integer> userIds = new ArrayList<>();
 	         
-	         if(users.size()>0){
+	    //      if(users.size()>0){
 	             
-	             for (User user : users) {
-	                 System.out.println("USER_ID CHECKED");
+	    //          for (User user : users) {
+	    //              System.out.println("USER_ID CHECKED");
 	                 
-	                 userIds.add(user.getId());
+	    //              userIds.add(user.getId());
 	             
-	             }
+	    //          }
 	             
-	             System.out.println("Id."+userIds.get(0));
+	    //          System.out.println("Id."+userIds.get(0));
 	            
-	             for (int i = 0; i < userIds.size(); i++) {
+	    //          for (int i = 0; i < userIds.size(); i++) {
 	            	 
-	            	 mvc.perform(get("/admin/adminhome/{id}",userIds.get(i))).andExpect(status().isOk());
-				}
+	    //         	 mvc.perform(get("/admin/adminhome/{id}",userIds.get(i))).andExpect(status().isOk());
+		// 		}
 	             
 	        
 	         
 	         
-	     }
-	     }
+	    //  }
+	    //  }
 		
 		
 		

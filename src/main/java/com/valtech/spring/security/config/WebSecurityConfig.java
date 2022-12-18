@@ -24,9 +24,9 @@ public class WebSecurityConfig {
 
 		http.authorizeRequests()
 		
-			 .antMatchers("/user/**").hasRole("USER")
-			.antMatchers("/admin","/admin/**").hasRole("ADMIN")
-			.antMatchers("/delivery/**").hasRole("USER")
+			//  .antMatchers("/user/**").hasRole("USER")
+			// .antMatchers("/admin","/admin/**").hasRole("ADMIN")
+			// .antMatchers("/delivery/**").hasRole("USER")
 			.antMatchers("/register", "/login", "/logout").permitAll()
 			.and()
 			
@@ -50,10 +50,10 @@ public class WebSecurityConfig {
 	
 	
 
-//	@Bean
-//	public PasswordEncoder passwordEncoder() {
-//		return new BCryptPasswordEncoder();
-//	}
+	// @Bean
+	// public PasswordEncoder passwordEncoder() {
+	// 	return new BCryptPasswordEncoder();
+	// }
 
 	@Bean
 	public UserDetailsManager userDetailsManager(PasswordEncoder passwordEncoder) {

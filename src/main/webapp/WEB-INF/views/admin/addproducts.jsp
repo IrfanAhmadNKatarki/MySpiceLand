@@ -112,7 +112,7 @@
                 <div class="custom-file">
                      <!-- <input type="file" class="custom-file-input" name="eimage" required accept="image/jpeg, image/png" id="productImage" data-max-size="2048" onchange="loadfile(event)"  /> 
                     <label class="custom-file-label border border-warning" for="productImage">Choose file</label>  -->
-                     <input type="file" id="productImage"  name="eimage" required accept="image/jpeg, image/png" id="productImage" data-max-size="2048" onchange="loadfile(event)">
+                     <input type="file" id="productImage"  name="eimage" required accept="image/jpeg, image/png, image/tif" id="productImage" data-max-size="204800" onchange="loadfile(event)">
                     
                  </div>
                  <h4></h4>
@@ -125,6 +125,7 @@
 
 			</form>
 		</div>
+
 	</div>
 	</div>
 
@@ -153,17 +154,13 @@
         
         var maxSize1 = parseFloat(maxSize);
         
-/*          console.log(typeof maxSize);
-         console.log(typeof maxSize1) */
+
          
          
         
         if (typeof (fileUpload.files) != "undefined") {
             var size = parseFloat(fileUpload.files[0].size / 1024).toFixed(2);
             var size1 = parseFloat(size);
-        /*     console.log(maxSize);
-            console.log(size); */
-            /* console.log(typeof size1); */
             if(size1 > maxSize1){
                 
                 alert("Image Size is greater than 2MB  " +size + "  KB "+"  Product is not added" );

@@ -6,6 +6,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.io.ByteArrayInputStream;
+
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -16,8 +18,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import com.valtech.spring.security.entity.CartLine;
 import com.valtech.spring.security.entity.Orders;
@@ -31,6 +36,14 @@ import com.valtech.spring.security.service.CartLineService;
 import com.valtech.spring.security.service.OrderService;
 import com.valtech.spring.security.service.ProductServiceImpl;
 import com.valtech.spring.security.service.UserDetailsService;
+import com.valtech.spring.security.util.BillDownload;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+
 
 @Controller
 public class UserController {
@@ -52,7 +65,32 @@ public class UserController {
 	
 	
 
-	
+	@GetMapping("/user/feedback/{id}")
+	public String feedbacksubmit(@PathVariable("id") int id, Model model) {
+		model.addAttribute("user", id);
+		return "user/feedback";
+	}
+
+
+
+	@RequestMapping(value = "/user/pdfreport/", method = RequestMethod.GET,
+	produces = MediaType.APPLICATION_PDF_VALUE)	
+	public ResponseEntity<InputStreamResource> cartBill() {
+
+	var cartLines = (List<CartLine>) cartLineService.findAll();
+
+	ByteArrayInputStream bis = BillDownload.cartReport(cartLines);
+
+	var headers = new HttpHeaders();
+	headers.add("Content-Disposition", "inline; filename=cartReport.pdf");
+
+	return ResponseEntity
+		.ok()
+		.headers(headers)
+		.contentType(MediaType.APPLICATION_PDF)
+		.body(new InputStreamResource(bis));
+}
+
 
 
 
@@ -291,10 +329,8 @@ public class UserController {
 	 * After order recieved buyer/user should provide feedback.
 	 */
 
-	@GetMapping("/user/feedback/{id}")
-	public String feedbacksubmit(@PathVariable("id") int id, Model model) {
-		model.addAttribute("user", id);
-		return "user/feedback";
-	}
+
+
+
 
 }

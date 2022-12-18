@@ -30,7 +30,7 @@ public class Products {
 
 	@Lob
 	@Column(name = "EIMAGE")
-	private byte[] eimage;
+	private String eimage;
 
 	private int userid;
 
@@ -39,7 +39,7 @@ public class Products {
 	}
 
 	public Products(String productName, double price, float weight, String productDescription, int quantity,
-			String image, byte[] eimage) {
+			String image, String eimage) {
 		super();
 		this.productName = productName;
 		this.price = price;
@@ -64,7 +64,7 @@ public class Products {
 	}
 
 	public Products(int id, String productName, double price, float weight, String productDescription, int quantity,
-			String image, byte[] eimage, int userid) {
+			String image, String eimage, int userid) {
 		super();
 		this.id = id;
 		this.productName = productName;
@@ -135,11 +135,11 @@ public class Products {
 		this.image = image;
 	}
 
-	public byte[] getEimage() {
+	public String getEimage() {
 		return eimage;
 	}
 
-	public void setEimage(byte[] eimage) {
+	public void setEimage(String eimage) {
 		this.eimage = eimage;
 	}
 

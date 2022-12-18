@@ -107,11 +107,16 @@ public class AdminController {
 			throws Exception {
 
 		try {
-			byte[] byteArr = file.getBytes();
-			int size = byteArr.length;
+
+		// 	Base64.Encoder enc = Base64.getEncoder();
+        // Base64.Decoder dec = Base64.getDecoder();
+
+			// String byteArr = new String(file.getBytes());
+			String base64Encoded = new String(Base64.getEncoder().encodeToString(file.getBytes()));
+			
+			long size = file.getSize();
 
 			System.out.println("The file size is " + size + " bytes");
-			String base64Encoded = new String(Base64.getEncoder().encode(byteArr));
 
 			List<Products> pro = productservice.getProductsbyproductname(productName);
 
@@ -133,7 +138,7 @@ public class AdminController {
 				model.addAttribute("perror", "Product is already added");
 				return "redirect:/admin/products/"+user_id;
 			}
-			Products p = new Products(productName, price, weight, productDescription, quantity, base64Encoded, byteArr);
+			Products p = new Products(productName, price, weight, productDescription, quantity, base64Encoded, base64Encoded);
 			
 			p.setUserid(user_id);
 			productservice.createProduct(p);
@@ -198,6 +203,7 @@ public class AdminController {
 		// ModelAndView view = new ModelAndView("products/afterupdateprolist");
 		Products p = productservice.getProduct(pro.getId());
 	
+		
 		
 		
 		pro.setImage(p.getImage());
