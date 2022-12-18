@@ -110,10 +110,61 @@ public class CartLine {
 		this.adminIds = adminIds;
 	}
 
+	
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		result = prime * result + prodid;
+		result = prime * result + ((productName == null) ? 0 : productName.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(price);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + quantity;
+		result = prime * result + adminIds;
+		result = prime * result + userid;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CartLine other = (CartLine) obj;
+		if (id != other.id)
+			return false;
+		if (prodid != other.prodid)
+			return false;
+		if (productName == null) {
+			if (other.productName != null)
+				return false;
+		} else if (!productName.equals(other.productName))
+			return false;
+		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
+			return false;
+		if (quantity != other.quantity)
+			return false;
+		if (adminIds != other.adminIds)
+			return false;
+		if (userid != other.userid)
+			return false;
+		return true;
+	}
+
+	
 	@Override
 	public String toString() {
 		return "CartLine [id=" + id + ", prodid=" + prodid + ", productName=" + productName + ", price=" + price
-				+ ", quantity=" + quantity + ", adminIds=" + adminIds + "]";
+				+ ", quantity=" + quantity + ", adminIds=" + adminIds + ", userid=" + userid + "]";
 	}
+
+	
 
 }

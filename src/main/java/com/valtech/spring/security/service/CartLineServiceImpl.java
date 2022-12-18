@@ -34,7 +34,7 @@ public class CartLineServiceImpl implements CartLineService {
 	@Override
 	public List<CartLine> findAll() {
 		logger.info("List of items to be viewed");
-		return cartLineRepo.findAll();
+		return (List<CartLine>) cartLineRepo.findAll();
 	}
 
 	// To get the cartitems by id.

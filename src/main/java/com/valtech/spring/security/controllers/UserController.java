@@ -4,10 +4,14 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import java.io.ByteArrayInputStream;
 
+import org.apache.juli.DateFormatCache;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -79,10 +83,13 @@ public class UserController {
 
 	var cartLines = (List<CartLine>) cartLineService.findAll();
 
-	ByteArrayInputStream bis = BillDownload.cartReport(cartLines);
+	
+	
+	ByteArrayInputStream bis = BillDownload.cartBill(cartLines);
+
 
 	var headers = new HttpHeaders();
-	headers.add("Content-Disposition", "inline; filename=cartReport.pdf");
+	headers.add("Content-Disposition", "inline; filename=cartBill.pdf");
 
 	return ResponseEntity
 		.ok()
