@@ -29,7 +29,7 @@ class SpringSecurityTestApplicationTests {
 
 
 		@Autowired
-		private MockMvc mvc;
+		// private MockMvc mvc;
 		
 		@Autowired
 		private ValtechUserDetailsService service;
